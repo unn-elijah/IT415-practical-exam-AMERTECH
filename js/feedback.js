@@ -17,24 +17,7 @@
   const forms = [];
   const saved = new Map();
   let reference = '', rating = 0, comment = '', pending = false, message = '';
-  let awaitingFeedback = false;
-
-  function openFeedback() {
-    if (!awaitingFeedback || success.hidden || modal.open) return;
-    awaitingFeedback = false;
-    modal.showModal();
-    close.focus();
-  }
-  const interactive = 'button, a, input, textarea, select, label, [role="button"], [contenteditable="true"]';
-  success.addEventListener('click', event => {
-    if (!event.target.closest(interactive)) openFeedback();
-  });
-  document.addEventListener('keydown', event => {
-    if (event.key !== 'Enter' || event.repeat || event.target.closest(interactive) ||
-        !awaitingFeedback || success.hidden || modal.open) return;
-    event.preventDefault();
-    openFeedback();
-  });
+  let feedbackTimer;
 
   function render() {
     for (const form of forms) {
@@ -118,11 +101,17 @@
 
   addForm(modal, close, 'afterend');
   document.addEventListener('transaction-ready', event => {
+    clearTimeout(feedbackTimer);
     ready(event.detail.reference);
-    awaitingFeedback = true;
+    const paymentReference = reference;
+    feedbackTimer = setTimeout(() => {
+      if (reference !== paymentReference || success.hidden || modal.open) return;
+      modal.showModal();
+      close.focus();
+    }, 4000);
   });
   document.addEventListener('transaction-reset', () => {
-    awaitingFeedback = false;
+    clearTimeout(feedbackTimer);
     if (modal.open) modal.close();
     ready('');
   });

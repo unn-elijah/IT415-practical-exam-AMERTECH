@@ -89,18 +89,13 @@ const server = http.createServer(async (req, res) => {
     await kiosk.waitForFunction(() => !document.querySelector('#qr [data-payment="qr"]').disabled);
     await confirm.click();
     await kiosk.locator('#success:visible').waitFor();
+    const successTime = Date.now();
     assert.equal(await kiosk.locator('#feedback-modal').isVisible(), false);
     await kiosk.keyboard.press('Enter');
-    await kiosk.locator('#feedback-modal[open]').waitFor();
-    await kiosk.getByRole('button', { name: 'Close feedback', exact: true }).click();
-    await kiosk.keyboard.press('Enter');
-    assert.equal(await kiosk.locator('#feedback-modal').isVisible(), false);
-    // A fresh payment allows a new prompt; tap opens it without adding a UI control.
-    await kiosk.evaluate(() => document.dispatchEvent(new CustomEvent('transaction-ready', {
-      detail: { reference: document.querySelector('#success .reference [data-method="qr"]').textContent }
-    })));
     await kiosk.locator('#success h1:visible').click();
+    assert.equal(await kiosk.locator('#feedback-modal').isVisible(), false);
     await kiosk.locator('#feedback-modal[open]').waitFor();
+    assert.ok(Date.now() - successTime >= 3000, 'Feedback should wait before opening automatically');
     assert.equal(await kiosk.locator('#success .feedback-form, #receipt .feedback-form').count(), 0);
     await kiosk.locator('label[for="feedback-modal-star-4"]').click();
     await kiosk.locator('#feedback-modal-star-4').focus();
@@ -119,8 +114,14 @@ const server = http.createServer(async (req, res) => {
     assert.equal(await kiosk.locator('#feedback-modal [type="submit"]').isDisabled(), true);
     await kiosk.getByRole('button', { name: 'Close feedback', exact: true }).click();
     assert.equal(await kiosk.locator('#feedback-modal').isVisible(), false);
+    // Leaving success before the delay must not open feedback over the receipt.
+    await kiosk.evaluate(() => document.dispatchEvent(new CustomEvent('transaction-ready', {
+      detail: { reference: document.querySelector('#success .reference [data-method="qr"]').textContent }
+    })));
     await kiosk.locator('#success [data-view="receipt"]:visible').click();
     await kiosk.locator('#receipt:visible').waitFor();
+    await kiosk.waitForTimeout(4500);
+    assert.equal(await kiosk.locator('#feedback-modal').isVisible(), false);
     assert.match(await kiosk.locator('#receipt:visible').innerText(), /QR Payment/);
     const savedFeedback = [...records].filter(([key]) => key.startsWith('campus-pos:feedback:'));
     assert.equal(savedFeedback.length, 1);
