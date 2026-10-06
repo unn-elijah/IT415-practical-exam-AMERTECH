@@ -12,3 +12,20 @@
 .feedback-form .feedback-stars input:disabled + label { cursor: default; }
 .feedback-form [type="submit"] { width: 100%; margin: 12px 0; }
 .feedback-form [role="status"] { margin-bottom: 16px; }
+.feedback-modal {
+  width: min(440px, calc(100vw - 32px)); max-height: calc(100dvh - 32px);
+  margin: auto; padding: 28px; border: 1px solid #eadfd5; border-radius: 24px;
+  background: #fffaf6; color: #302c28; box-shadow: 0 20px 70px #0003;
+}
+.feedback-modal::backdrop { background: #0007; }
+.feedback-modal .feedback-close {
+  position: absolute; top: 8px; right: 8px; width: 48px; height: 48px;
+  padding: 0; border: 0; border-radius: 50%; background: transparent;
+  color: #302c28; font-size: 32px; line-height: 1; cursor: pointer;
+}
+.feedback-modal .feedback-close:focus-visible { outline: 3px solid #b55a00; }
+.feedback-modal .feedback-form h2 { padding-right: 28px; }
+@media (max-width: 380px) {
+  .feedback-modal { padding: 20px; }
+  .feedback-modal .feedback-stars { gap: 0; }
+}

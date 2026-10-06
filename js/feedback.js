@@ -1,8 +1,19 @@
 'use strict';
 
 (() => {
-  const receipt = document.getElementById('receipt');
   const success = document.getElementById('success');
+  if (!success) return;
+  const modal = document.createElement('dialog');
+  modal.id = 'feedback-modal';
+  modal.className = 'feedback-modal';
+  modal.setAttribute('aria-labelledby', 'feedback-modal-title');
+  modal.innerHTML = '<button type="button" class="feedback-close" aria-label="Close feedback">×</button>';
+  document.body.appendChild(modal);
+  const close = modal.querySelector('.feedback-close');
+  close.addEventListener('click', () => modal.close());
+  modal.addEventListener('close', () => {
+    if (!success.hidden) success.querySelector('h1').focus();
+  });
   const forms = [];
   const saved = new Map();
   let reference = '', rating = 0, comment = '', pending = false, message = '';
@@ -39,9 +50,9 @@
     const form = document.createElement('form');
     form.id = `${id}-feedback`;
     form.className = 'feedback-form mt-3';
-    form.setAttribute('aria-label', `${id === 'success' ? 'Payment' : 'Receipt'} feedback`);
+    form.setAttribute('aria-label', 'Payment feedback');
     form.innerHTML = `
-      <h2 class="h5">How was your experience?</h2>
+      <h2 class="h5" id="feedback-modal-title">How was your experience?</h2>
       <fieldset class="feedback-rating">
         <legend class="form-label">Rating</legend>
         <div class="feedback-stars">${[1, 2, 3, 4, 5].map(value => `
@@ -87,10 +98,21 @@
     });
   }
 
-  addForm(success, success?.querySelector('.view-heading'), 'beforebegin');
-  addForm(receipt, receipt?.querySelector('[data-new-transaction]'), 'afterend');
-  document.addEventListener('transaction-ready', event => ready(event.detail.reference));
-  receipt?.addEventListener('receipt-ready', event => ready(event.detail.reference));
-  document.addEventListener('transaction-reset', () => ready(''));
+  addForm(modal, close, 'afterend');
+  document.addEventListener('transaction-ready', event => {
+    ready(event.detail.reference);
+    const openedReference = reference;
+    // Payment navigation finishes after the transaction is recorded.
+    setTimeout(() => {
+      if (reference === openedReference && !success.hidden && !modal.open) {
+        modal.showModal();
+        close.focus();
+      }
+    }, 0);
+  });
+  document.addEventListener('transaction-reset', () => {
+    if (modal.open) modal.close();
+    ready('');
+  });
   render();
 })();
