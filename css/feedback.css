@@ -1,0 +1,14 @@
+.feedback-form { text-align: left; }
+.feedback-form .feedback-rating { margin: 0 0 16px; padding: 0; border: 0; }
+.feedback-form .feedback-rating legend { float: none; width: auto; font-size: 1rem; }
+.feedback-form .feedback-stars { display: flex; gap: 4px; }
+.feedback-form .feedback-stars label {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; margin: 0; border-radius: 8px;
+  color: #777; font-size: 36px; line-height: 1; cursor: pointer;
+}
+.feedback-form .feedback-stars label.is-selected { color: #b55a00; }
+.feedback-form .feedback-stars input:focus-visible + label { outline: 3px solid #b55a00; outline-offset: 2px; }
+.feedback-form .feedback-stars input:disabled + label { cursor: default; }
+.feedback-form [type="submit"] { width: 100%; margin: 12px 0; }
+.feedback-form [role="status"] { margin-bottom: 16px; }

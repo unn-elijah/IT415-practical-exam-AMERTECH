@@ -2,68 +2,95 @@
 
 (() => {
   const receipt = document.getElementById('receipt');
-  const button = receipt?.querySelector('[data-new-transaction]');
-  if (!button) return;
-  const form = document.createElement('form');
-  form.id = 'receipt-feedback';
-  form.className = 'mt-3';
-  form.setAttribute('aria-label', 'Receipt feedback');
-  form.innerHTML = `
-    <h2 class="h5">How was your experience?</h2>
-    <label class="form-label" for="feedback-rating">Rating</label>
-    <select class="form-select mb-3" id="feedback-rating" name="rating" required>
-      <option value="">Choose a rating</option>
-      <option value="5">5 — Excellent</option>
-      <option value="4">4 — Good</option>
-      <option value="3">3 — Okay</option>
-      <option value="2">2 — Poor</option>
-      <option value="1">1 — Very poor</option>
-    </select>
-    <label class="form-label" for="feedback-comment">Comments (optional)</label>
-    <textarea class="form-control" id="feedback-comment" name="comment" rows="3" maxlength="1000" placeholder="Tell us what we can improve"></textarea>
-    <button class="btn btn-primary" type="submit">Send Feedback</button>
-    <p class="small-note" id="feedback-status" role="status" aria-live="polite"></p>`;
-  button.insertAdjacentElement('afterend', form);
-  const status = form.querySelector('[role="status"]');
-  const submit = form.querySelector('button');
-  form.elements.rating.style.minHeight = '48px';
-  const completed = new Set();
-  let reference = '';
-  let pending = false;
-  receipt.addEventListener('receipt-ready', event => {
-    const next = event.detail.reference;
-    if (reference !== next) {
-      reference = next;
-      form.reset();
-      pending = false;
-    }
-    submit.disabled = pending || completed.has(reference);
-    status.textContent = completed.has(reference) ? 'Thank you! Your feedback has been saved.' : '';
-  });
-  form.addEventListener('submit', async event => {
-    event.preventDefault();
-    if (pending || completed.has(reference) || !form.reportValidity()) return;
-    if (!reference) { status.textContent = 'Complete a transaction before sending feedback.'; return; }
-    const sentReference = reference;
-    pending = true;
-    submit.disabled = true;
-    status.textContent = 'Sending feedback…';
-    try {
-      const response = await fetch('/api/feedback', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ reference: sentReference, rating: Number(form.elements.rating.value), comment: form.elements.comment.value.trim() })
+  const success = document.getElementById('success');
+  const forms = [];
+  const saved = new Map();
+  let reference = '', rating = 0, comment = '', pending = false, message = '';
+
+  function render() {
+    for (const form of forms) {
+      form.querySelectorAll('[name="rating"]').forEach(input => {
+        input.checked = Number(input.value) === rating;
+        input.disabled = pending || saved.has(reference);
+        input.nextElementSibling.classList.toggle('is-selected', Number(input.value) <= rating);
       });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || 'Unable to save feedback. Please try again.');
-      completed.add(sentReference);
-      if (reference === sentReference) status.textContent = 'Thank you! Your feedback has been saved.';
-    } catch (error) {
-      if (reference === sentReference) status.textContent = error.message || 'Unable to save feedback. Please try again.';
-    } finally {
-      if (reference === sentReference) {
-        pending = false;
-        submit.disabled = completed.has(reference);
-      }
+      form.elements.comment.value = comment;
+      form.elements.comment.disabled = pending || saved.has(reference);
+      form.querySelector('[type="submit"]').disabled = !reference || pending || saved.has(reference);
+      form.querySelector('[role="status"]').textContent = message;
     }
-  });
+  }
+
+  function ready(next) {
+    if (next !== reference) {
+      reference = next;
+      const previous = saved.get(next);
+      rating = previous?.rating || 0;
+      comment = previous?.comment || '';
+      pending = false;
+      message = previous ? 'Thank you! Your feedback has been saved.' : '';
+    }
+    render();
+  }
+
+  function addForm(screen, anchor, position) {
+    if (!anchor) return;
+    const id = screen.id;
+    const form = document.createElement('form');
+    form.id = `${id}-feedback`;
+    form.className = 'feedback-form mt-3';
+    form.setAttribute('aria-label', `${id === 'success' ? 'Payment' : 'Receipt'} feedback`);
+    form.innerHTML = `
+      <h2 class="h5">How was your experience?</h2>
+      <fieldset class="feedback-rating">
+        <legend class="form-label">Rating</legend>
+        <div class="feedback-stars">${[1, 2, 3, 4, 5].map(value => `
+          <input class="visually-hidden" type="radio" id="${id}-star-${value}" name="rating" value="${value}" required>
+          <label for="${id}-star-${value}" title="${value} ${value === 1 ? 'star' : 'stars'}">
+            <span aria-hidden="true">★</span><span class="visually-hidden">${value} ${value === 1 ? 'star' : 'stars'}</span>
+          </label>`).join('')}</div>
+      </fieldset>
+      <label class="form-label" for="${id}-feedback-comment">Comments (optional)</label>
+      <textarea class="form-control" id="${id}-feedback-comment" name="comment" rows="3" maxlength="1000" placeholder="Tell us what we can improve"></textarea>
+      <button class="btn btn-primary" type="submit">Send Feedback</button>
+      <p class="small-note" role="status" aria-live="polite"></p>`;
+    anchor.insertAdjacentElement(position, form);
+    forms.push(form);
+    form.addEventListener('change', event => {
+      if (event.target.name === 'rating') { rating = Number(event.target.value); render(); }
+    });
+    form.elements.comment.addEventListener('input', event => {
+      comment = event.target.value;
+      for (const other of forms) if (other !== form) other.elements.comment.value = comment;
+    });
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (!reference || pending || saved.has(reference) || !form.reportValidity()) return;
+      const sentReference = reference;
+      const submission = { reference, rating, comment: comment.trim() };
+      pending = true;
+      message = 'Sending feedback…';
+      render();
+      try {
+        const response = await fetch('/api/feedback', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(submission)
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Unable to save feedback. Please try again.');
+        saved.set(sentReference, submission);
+        if (reference === sentReference) message = 'Thank you! Your feedback has been saved.';
+      } catch (error) {
+        if (reference === sentReference) message = error.message || 'Unable to save feedback. Please try again.';
+      } finally {
+        if (reference === sentReference) { pending = false; render(); }
+      }
+    });
+  }
+
+  addForm(success, success?.querySelector('.view-heading'), 'beforebegin');
+  addForm(receipt, receipt?.querySelector('[data-new-transaction]'), 'afterend');
+  document.addEventListener('transaction-ready', event => ready(event.detail.reference));
+  receipt?.addEventListener('receipt-ready', event => ready(event.detail.reference));
+  document.addEventListener('transaction-reset', () => ready(''));
+  render();
 })();

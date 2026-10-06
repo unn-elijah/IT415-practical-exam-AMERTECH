@@ -288,6 +288,7 @@
     const methodKey = method === 'Cash' ? 'cash' : method === 'QR Payment' ? 'qr' : 'card';
     document.getElementById('success').querySelector(`.reference [data-method="${methodKey}"]`).textContent =
       lastTransaction.reference;
+    document.dispatchEvent(new CustomEvent('transaction-ready', { detail: { reference: lastTransaction.reference } }));
   }
 
   function renderReceipt() {
@@ -327,6 +328,7 @@
   }
 
   function startNewOrder() {
+    document.dispatchEvent(new CustomEvent('transaction-reset'));
     closeQrSession();
     cart.length = 0;
     renderCart();
