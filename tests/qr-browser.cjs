@@ -5,6 +5,7 @@ const http = require('node:http');
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const create = require('../api/qr/index');
 const session = require('../api/qr/[id]');
+const feedback = require('../api/feedback');
 const staticServer = require('../server');
 const records = new Map();
 const originalFetch = global.fetch;
@@ -40,14 +41,14 @@ const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, 'http://localhost');
     const match = url.pathname.match(/^\/api\/qr\/([a-f0-9]{32})$/);
-    if (url.pathname !== '/api/qr' && !match) return staticServer.emit('request', req, res);
+    if (url.pathname !== '/api/qr' && url.pathname !== '/api/feedback' && !match) return staticServer.emit('request', req, res);
     let body = '';
     for await (const chunk of req) body += chunk;
     req.body = body ? JSON.parse(body) : undefined;
     req.query = { id: match?.[1] };
     res.status = code => { res.statusCode = code; return res; };
     res.json = data => { res.setHeader('Content-Type', 'application/json'); res.end(JSON.stringify(data)); };
-    await (match ? session : create)(req, res);
+    await (url.pathname === '/api/feedback' ? feedback : match ? session : create)(req, res);
   } catch (error) { res.statusCode = 500; res.end(error.message); }
 });
 
@@ -91,11 +92,23 @@ const server = http.createServer(async (req, res) => {
     await kiosk.locator('#success [data-view="receipt"]:visible').click();
     await kiosk.locator('#receipt:visible').waitFor();
     assert.match(await kiosk.locator('#receipt:visible').innerText(), /QR Payment/);
+    assert.equal(await kiosk.locator('#receipt [data-new-transaction] + #receipt-feedback').count(), 1);
+    await kiosk.locator('#feedback-rating').selectOption('5');
+    await kiosk.locator('#feedback-comment').fill('Easy to use. Thank you!');
+    await kiosk.locator('#receipt-feedback').scrollIntoViewIfNeeded();
+    await kiosk.screenshot({ path: '.verification/receipt-feedback.png', fullPage: true });
+    await kiosk.locator('#receipt-feedback button').click();
+    await kiosk.waitForFunction(() => document.getElementById('feedback-status').textContent.includes('has been saved'));
+    assert.equal(await kiosk.locator('#receipt-feedback button').isDisabled(), true);
+    const savedFeedback = [...records].filter(([key]) => key.startsWith('campus-pos:feedback:'));
+    assert.equal(savedFeedback.length, 1);
+    assert.equal(JSON.parse(savedFeedback[0][1]).rating, 5);
+    assert.equal(JSON.parse(savedFeedback[0][1]).comment, 'Easy to use. Thank you!');
     await kiosk.locator('#receipt [data-new-transaction]:visible').click();
     await kiosk.locator('#order:visible').waitFor();
     assert.equal(await kiosk.locator('#qr [data-payment="qr"]').first().isDisabled(), true);
     assert.deepEqual(errors, []);
-    console.log('PASS: browser QR generation, phone link, insufficient amount, Done, kiosk polling, confirmation, receipt, and reset. Redis is mocked; live deployment still requires verification.');
+    console.log('PASS: browser QR flow, receipt feedback submission and storage, duplicate prevention, and transaction reset. Redis is mocked; live deployment still requires verification.');
   } finally {
     await browser?.close();
     if (server.listening) await new Promise(resolve => server.close(resolve));

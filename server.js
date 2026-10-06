@@ -51,6 +51,15 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'OPTIONS') { res.writeHead(204); res.end(); return; }
   try {
     const url = new URL(req.url, 'http://localhost');
+    if (url.pathname === '/api/feedback') {
+      req.body = req.method === 'POST' ? await readBody(req) : undefined;
+      res.status = code => { res.statusCode = code; return res; };
+      res.json = data => {
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify(data));
+      };
+      return require('./api/feedback')(req, res);
+    }
     const now = Date.now();
     for (const [id, session] of sessions) {
       if (session.expires <= now) sessions.delete(id);

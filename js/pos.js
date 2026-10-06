@@ -293,6 +293,7 @@
   function renderReceipt() {
     if (!lastTransaction) return;
     const transaction = lastTransaction;
+    receipt.dispatchEvent(new CustomEvent('receipt-ready', { detail: { reference: transaction.reference } }));
     const time = receipt.querySelector('.receipt-date time');
     time.dateTime = transaction.date.toISOString();
     time.textContent = transaction.date.toLocaleString('en-US', {
