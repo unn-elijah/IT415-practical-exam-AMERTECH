@@ -37,9 +37,10 @@
   const cashError = cashPanel.querySelector('#cash-error');
   const qrPanel = document.getElementById('qr');
   const qrConfirm = qrPanel.querySelector('[data-payment="qr"]');
-  // Live Server serves the UI; the Node server receives the phone's Done signal.
+  // Public deployments use their own API; local Live Server uses the Node server.
   const qrServer = new URL(location.protocol === 'file:' ? 'http://localhost:3000' : location.origin);
-  qrServer.port = '3000';
+  const localHost = /^(localhost|127\.0\.0\.1|\[::1\]|10\.\d+\.\d+\.\d+|192\.168\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+)$/.test(qrServer.hostname);
+  if (localHost && qrServer.protocol === 'http:') qrServer.port = '3000';
   const qrApi = `${qrServer.origin}/api/qr`;
   let qrSession = null;
   let qrDone = false;
@@ -97,14 +98,15 @@
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ total })
       });
-      if (!response.ok) throw new Error('Unable to create QR payment. Check that node server.js is running.');
-      const { id, paymentUrl } = await response.json();
+      const session = await response.json();
+      if (!response.ok) throw new Error(session.error || 'Unable to create QR payment.');
+      const { id, paymentUrl } = session;
       if (generation !== qrGeneration) {
         fetch(`${qrApi}/${id}`, { method: 'DELETE' }).catch(() => {});
         return;
       }
       qrSession = id;
-      const link = new URL(paymentUrl);
+      const link = new URL(paymentUrl, qrServer.origin);
       const code = qrcodegen.QrCode.encodeText(link.href, qrcodegen.QrCode.Ecc.MEDIUM);
       const size = code.size + 8;
       svg.setAttribute('viewBox', `0 0 ${size} ${size}`);
@@ -130,7 +132,8 @@
       if (generation === qrGeneration) {
         svg.replaceChildren();
         note.textContent = error instanceof TypeError
-          ? 'QR server unavailable. Run node server.js, then reopen QR Payment.'
+          ? (localHost ? 'QR server unavailable. Run node server.js, then reopen QR Payment.'
+            : 'QR server unavailable. Check the deployment and reopen QR Payment.')
           : error.message;
       }
     }
