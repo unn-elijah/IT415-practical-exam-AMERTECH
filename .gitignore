@@ -1,1 +1,7 @@
 .verification/
+node_modules/
+public/
+.vercel/
+.env
+.env.*
+!.env.example

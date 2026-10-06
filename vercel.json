@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "node scripts/build-static.js",
+  "outputDirectory": "public",
+  "rewrites": [
+    { "source": "/api/qr", "destination": "/api/qr/index" }
+  ]
+}
