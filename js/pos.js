@@ -125,7 +125,7 @@
       const subtotal = row.querySelector('.cart-controls > strong');
       subtotal.textContent = formatMoney(item.price * item.quantity);
       subtotal.setAttribute('aria-label', `Subtotal ${subtotal.textContent}`);
-      populated.insertBefore(row, populated.querySelector('.cart-total'));
+      populated.querySelector('.cart-items').appendChild(row);
     });
     const count = getItemCount();
     itemCount.textContent = `${count} ${count === 1 ? 'item' : 'items'} · ${cart.length} ${cart.length === 1 ? 'favorite' : 'favorites'}`;

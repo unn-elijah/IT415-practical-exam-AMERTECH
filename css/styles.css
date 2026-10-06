@@ -48,8 +48,7 @@ h3 { font-size: 19px; font-weight: 700; }
 .header-inner { display: flex; align-items: center; gap: 24px; padding: 24px 32px; border-bottom: 1px solid var(--line); }
 .brand { display: flex; gap: 12px; align-items: center; color: var(--ink); text-decoration: none; min-height: 48px; }
 .brand:hover { color: var(--accent-dark); }
-.brand-mark { width: 48px; height: 48px; border-radius: 16px; display: grid; place-items: center; background: var(--accent); font-weight: 800; font-size: 20px; position: relative; }
-.brand-dot { width: 6px; height: 6px; background: white; border-radius: 50%; position: absolute; right: 8px; top: 8px; }
+.brand-logo { display: block; width: 48px; height: auto; flex-shrink: 0; }
 .brand strong { display: block; font-size: 18px; }
 .brand small { display: block; font-size: 12px; color: var(--muted); }
 .kiosk-label { font-size: 11px; letter-spacing: 1.5px; color: var(--muted); margin-left: auto; }
@@ -102,8 +101,8 @@ h3 { font-size: 19px; font-weight: 700; }
 .product-info { flex: 1; min-width: 0; position: relative; }
 .product-info strong { display: block; font-size: 15px; line-height: 1.3; }
 .product-info > span:not(.add-symbol) { display: block; font-size: 12px; color: var(--muted); margin-top: 5px; line-height: 1.4; }
-.product-info b { display: block; font-size: 16px; color: var(--accent-dark); margin-top: 16px; padding-right: 26px; }
-.add-symbol { position: absolute; right: 0; bottom: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-dark); display: grid; place-items: center; font-size: 20px; }
+.product-info b { display: flex; align-items: center; min-height: 40px; font-size: 16px; color: var(--accent-dark); margin-top: 16px; padding-right: 44px; }
+.add-symbol { position: absolute; right: 0; bottom: 0; width: 50px; height: 50px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-dark); display: grid; place-items: center; font-size: 20px; line-height: 1; }
 .placeholder-note { margin-top: 20px; }
 .no-results { text-align: center; border: 1px dashed var(--line); border-radius: var(--radius); padding: 40px 16px; background: white; }
 .no-results p { color: var(--muted); font-size: 14px; }
@@ -1924,3 +1923,207 @@ h3 {
     scroll-behavior: auto !important;
   }
 }}
+/* Bounded cart: only the middle region scrolls, in either order state. */
+.surface.cart-panel {
+  --cart-viewport-space: 180px;
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  min-width: 0;
+  min-height: 0;
+  height: min(760px, calc(100vh - var(--cart-viewport-space)));
+  height: min(760px, calc(100dvh - var(--cart-viewport-space)));
+  padding: 24px 16px;
+  overflow: hidden;
+}
+.cart-panel > .panel-heading {
+  flex: 0 0 auto;
+  padding: 0 8px 12px;
+}
+.cart-state {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+}
+.cart-items {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 8px;
+  scrollbar-gutter: stable;
+  scroll-padding-block: 8px;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
+}
+.cart-items:focus-visible {
+  outline: 2px solid #146681;
+  outline-offset: -2px;
+  border-radius: 12px;
+}
+.cart-checkout {
+  flex: 0 0 auto;
+  min-width: 0;
+  padding: 12px 8px 0;
+  border-top: 1px solid var(--line);
+  background: var(--white);
+}
+.cart-checkout .cart-total { margin: 0 0 16px; }
+.cart-checkout .small-note { font-size: 12px; }
+.cart-items .cart-item { min-width: 0; }
+.cart-items .cart-name strong { overflow-wrap: anywhere; }
+.cart-items .empty-cart { padding: 24px 0; }
+.cart-items .empty-cart p { margin-bottom: 0; }
+@media (max-width: 980px) {
+  .surface.cart-panel { --cart-viewport-space: 220px; }
+}
+@media (max-width: 760px) {
+  .surface.cart-panel {
+    --cart-viewport-space: 72px;
+    height: min(620px, calc(100vh - var(--cart-viewport-space)));
+    height: min(620px, calc(100dvh - var(--cart-viewport-space)));
+    padding: 20px 12px;
+  }
+}
+@media (max-height: 650px) {
+  .surface.cart-panel { padding-block: 12px; }
+  .cart-panel > .panel-heading { padding-bottom: 6px; }
+  .cart-panel .panel-heading .eyebrow { margin-bottom: 4px; }
+  .cart-checkout { padding-top: 8px; }
+  .cart-checkout .cart-total { margin-bottom: 8px; }
+  .cart-checkout .small-note { margin-top: 6px; line-height: 1.4; }
+}
+
+/* One workspace height keeps the kiosk frame consistent across every screen. */
+.workspace { min-height: 0; min-width: 0; }
+.workspace {
+  height: min(900px, calc(100vh - 207px));
+  height: min(900px, calc(100dvh - 207px));
+  grid-template-rows: minmax(0, 1fr);
+}
+.workspace > .app-shell,
+.workspace > .journey-sidebar,
+.app-shell > #order,
+.order-layout { min-height: 0; min-width: 0; }
+.workspace > .journey-sidebar { overflow-y: auto; }
+.app-shell > #order { height: 100%; }
+.order-layout { height: 100%; align-items: stretch; }
+.order-layout > .catalog {
+  min-height: 0;
+  min-width: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-padding-block: 12px;
+}
+.order-layout > .surface.cart-panel {
+  height: 100%;
+  max-height: 100%;
+  align-self: stretch;
+}
+.surface.review-panel {
+  --review-viewport-space: 180px;
+  display: flex;
+  flex-direction: column;
+  height: min(640px, calc(100vh - var(--review-viewport-space)));
+  height: min(640px, calc(100dvh - var(--review-viewport-space)));
+  min-height: 0;
+  min-width: 0;
+  padding: 24px 16px;
+  overflow: hidden;
+}
+.review-panel > .panel-heading { flex: 0 0 auto; padding: 0 8px 12px; }
+.review-items {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 8px;
+  scrollbar-gutter: stable;
+  scroll-padding-block: 8px;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
+}
+.review-items:focus-visible,
+.order-layout > .catalog:focus-visible {
+  outline: 2px solid #146681;
+  outline-offset: -2px;
+  border-radius: 12px;
+}
+.review-items .order-table { margin-top: 0; }
+.review-checkout {
+  flex: 0 0 auto;
+  min-width: 0;
+  padding: 12px 8px 0;
+  background: var(--white);
+  border-top: 1px solid var(--line);
+}
+.review-checkout .review-total { padding-top: 0; }
+.review-checkout .actions { margin: 16px 0 0; }
+@media (max-width: 980px) {
+  .workspace {
+    height: min(900px, calc(100vh - 190px));
+    height: min(900px, calc(100dvh - 190px));
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .surface.review-panel { --review-viewport-space: 200px; }
+}
+@media (max-width: 760px) {
+  /* Two bounded rows preserve the stacked catalog/cart flow without an overlay. */
+  .workspace { height: min(900px, calc(100vh - 300px)); height: min(900px, calc(100dvh - 300px)); }
+  .app-shell > #order { height: auto; }
+  .order-layout {
+    height: calc(2 * min(620px, calc(100vh - 72px)));
+    height: calc(2 * min(620px, calc(100dvh - 72px)));
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 0;
+  }
+  .surface.review-panel { --review-viewport-space: 48px; padding: 20px 12px; }
+  .review-checkout .actions { gap: 8px; margin-top: 12px; }
+}
+@media (max-height: 650px) {
+  .journey-sidebar .sidebar-message { display: none; }
+  .surface.review-panel { padding-block: 12px; }
+  .review-panel > .panel-heading { padding-bottom: 6px; }
+  .review-checkout { padding-top: 8px; }
+  .review-checkout .actions { margin-top: 8px; }
+  .review-checkout .review-total small { margin-top: 2px; }
+}
+@media (max-height: 650px) {
+  .order-layout > .surface.cart-panel { padding-block: 8px; }
+  .cart-panel .panel-heading h2 { font-size: 20px; }
+  .cart-checkout .cart-total > strong { font-size: 26px; }
+}
+@media (max-height: 650px) {
+  .kiosk-frame .header-inner { padding-block: 12px; }
+  .workspace > .journey-sidebar { padding-block: 4px; }
+  .workspace {
+    height: calc(100vh - 183px);
+    height: calc(100dvh - 183px);
+  }
+  .cart-checkout .small-note { font-size: 11px; line-height: 1.25; }
+}
+@media (max-width: 980px) and (max-height: 650px) {
+  .workspace {
+    height: calc(100vh - 166px);
+    height: calc(100dvh - 166px);
+  }
+}
+@media (max-width: 760px) and (max-height: 650px) {
+  .workspace { height: min(900px, calc(100vh - 300px)); height: min(900px, calc(100dvh - 300px)); }
+}
+
+/* Long screens scroll inside the shared frame instead of resizing it. */
+.workspace > .app-shell {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-padding-block: 12px;
+}
+.workspace > .app-shell:focus-visible {
+  outline: 2px solid #146681;
+  outline-offset: -2px;
+}

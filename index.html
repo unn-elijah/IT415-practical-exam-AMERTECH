@@ -21,9 +21,13 @@
       <header class="store-header">
         <div class="header-inner">
           <a href="#order" class="brand" data-view="order" aria-label="CS Campus Store, return to Order">
+<<<<<<< HEAD
             <span class="brand-mark">CS<span class="brand-dot">
               </span>
             </span>
+=======
+            <img class="brand-logo" src="assets/new-logo.svg" alt="CS Campus Store orange dining utensils logo">
+>>>>>>> 5ba9729c86edd9d68e308a49098869e974accd3d
             <span>
               <strong>CS Campus Store</strong>
               <small>A little break. A better day.</small>
@@ -60,19 +64,22 @@
               </li>
             </ol>
           </nav>
+<<<<<<< HEAD
           <div class="sidebar-message">
             <span aria-hidden="true">✦</span>
             <strong>A little break.<br>A better day.</strong>
             <p>Your campus favorites,<br>all in one place.</p>
           </div>
+=======
+>>>>>>> 5ba9729c86edd9d68e308a49098869e974accd3d
         </aside>
-        <main id="main" class="container-fluid app-shell">
+        <main id="main" class="container-fluid app-shell" tabindex="0">
           <noscript>
             <p class="alert alert-warning">Enable JavaScript to navigate the sample screens. The initial order is visible below.</p>
           </noscript>
           <section class="view" id="order" data-stage="1" aria-label="Item selection">
             <div class="order-layout">
-              <div class="catalog">
+              <div class="catalog" tabindex="0" role="region" aria-label="Campus catalog">
                 <div class="view-heading">
                   <p class="eyebrow">GOOD FOOD, RIGHT HERE</p>
                   <h1 tabindex="-1">What sounds good?</h1>
@@ -285,7 +292,8 @@
                     </path>
                   </svg>
                 </div>
-                <div data-order="populated">
+                <div class="cart-state" data-order="populated">
+<div class="cart-items" tabindex="0" role="region" aria-label="Scrollable cart items">
                   <p class="item-count">4 items · 3 favorites</p>
                   <article class="cart-item">
                     <span class="cart-thumbnail">
@@ -395,7 +403,9 @@
                       <strong aria-label="Subtotal ₱35.00">₱35.00</strong>
                     </div>
                   </article>
-                  <div class="cart-total">
+                  </div>
+<footer class="cart-checkout">
+<div class="cart-total">
                     <span>Total</span>
                     <strong>₱175.00</strong>
                   </div>
@@ -404,9 +414,17 @@
                       </path>
                     </svg>
                   </button>
+<<<<<<< HEAD
                   <p class="small-note">Fixed sample order · No items can be changed.</p>
+=======
+                  <p class="small-note">
+                    Fixed sample order · No items can be changed.
+                  </p>
+</footer>
+>>>>>>> 5ba9729c86edd9d68e308a49098869e974accd3d
                 </div>
-                <div data-order="empty" hidden="">
+                <div class="cart-state" data-order="empty" hidden="">
+<div class="cart-items" tabindex="0" role="region" aria-label="Scrollable cart items">
                   <div class="empty-cart">
                     <svg class="empty-icon" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <path d="M22 28h36l4 38H18l4-38Zm9 0v-6a9 9 0 0 1 18 0v6">
@@ -415,7 +433,9 @@
                     <h3>Your order is empty</h3>
                     <p>Campus favorites are waiting.<br>Use the preview controls below to see a sample order.</p>
                   </div>
-                  <div class="cart-total">
+                  </div>
+<footer class="cart-checkout">
+<div class="cart-total">
                     <span>Total</span>
                     <strong>₱0.00</strong>
                   </div>
@@ -424,7 +444,14 @@
                       </path>
                     </svg>
                   </button>
+<<<<<<< HEAD
                   <p class="small-note">Load a populated order using Prototype previews.</p>
+=======
+                  <p class="small-note">
+                    Load a populated order using Prototype previews.
+                  </p>
+</footer>
+>>>>>>> 5ba9729c86edd9d68e308a49098869e974accd3d
                 </div>
               </aside>
             </div>
@@ -441,7 +468,8 @@
                   <h2>Your order</h2>
                   <span class="pill">4 items</span>
                 </div>
-                <div class="order-table" role="table" aria-label="Sample order">
+                <div class="review-items" tabindex="0" role="region" aria-label="Scrollable order items">
+<div class="order-table" role="table" aria-label="Sample order">
                   <div class="table-head" role="row">
                     <span role="columnheader">Product</span>
                     <span role="columnheader">Quantity</span>
@@ -493,12 +521,19 @@
                     </span>
                   </div>
                 </div>
+<<<<<<< HEAD
                 <div class="review-total">
                   <span>Total amount<small>All prices in Philippine pesos</small>
+=======
+</div>
+                <footer class="review-checkout">
+<div class="review-total">
+                  <span
+                    >Total amount<small>All prices in Philippine pesos</small>
+>>>>>>> 5ba9729c86edd9d68e308a49098869e974accd3d
                   </span>
                   <strong>₱175.00</strong>
                 </div>
-              </div>
               <div class="actions">
                 <button type="button" class="btn btn-outline-secondary" data-view="order">Back to Order <svg class="icon" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M63 40H17m15-15L17 40l15 15">
@@ -511,6 +546,8 @@
                   </svg>
                 </button>
               </div>
+</footer>
+</div>
             </div>
           </section>
           <section class="view" id="methods" data-stage="3" aria-label="Payment method" hidden="">
@@ -2444,6 +2481,1722 @@
             ><button type="button" data-preview="card-processing">
               Card: processing
             </button>
+<<<<<<< HEAD
+=======
+            <!doctype html>
+            <html lang="en">
+              <head>
+                <meta charset="utf-8" />
+                <meta
+                  name="viewport"
+                  content="width=device-width, initial-scale=1"
+                />
+                <meta name="theme-color" content="#17241f" />
+                <meta
+                  name="description"
+                  content="CS Campus Store touchscreen kiosk UI prototype with static sample data."
+                />
+                <title>CS Campus Store · Kiosk UI Prototype</title>
+                <link rel="stylesheet" href="assets/bootstrap.min.css" />
+                <link rel="stylesheet" href="css/styles.css" />
+                <script src="js/navigation.js" defer></script>
+                <script src="js/pos.js" defer></script>
+              </head>
+              <body>
+                <a class="skip-link" href="#main">Skip to main content</a>
+                <header class="store-header">
+                  <div class="header-inner">
+                    <a
+                      href="#order"
+                      class="brand"
+                      data-view="order"
+                      aria-label="CS Campus Store, return to Order"
+                      ><span class="brand-mark"
+                        >CS<span class="brand-dot"></span></span
+                      ><span
+                        ><strong>CS Campus Store</strong
+                        ><small>A little break. A better day.</small></span
+                      ></a
+                    ><span class="kiosk-label">SELF-SERVICE KIOSK</span
+                    ><span class="prototype-badge"
+                      >UI Prototype — Sample Data</span
+                    >
+                  </div>
+                </header>
+                <nav class="progress-nav" aria-label="Transaction progress">
+                  <ol>
+                    <li data-stage="1" aria-current="step">
+                      <span class="step-number">1</span><span>Order</span>
+                    </li>
+                    <li data-stage="2">
+                      <span class="step-number">2</span><span>Review</span>
+                    </li>
+                    <li data-stage="3">
+                      <span class="step-number">3</span><span>Payment</span>
+                    </li>
+                    <li data-stage="4">
+                      <span class="step-number">4</span><span>Receipt</span>
+                    </li>
+                  </ol>
+                </nav>
+                <main id="main" class="container-fluid app-shell" tabindex="0">
+                  <noscript
+                    ><p class="alert alert-warning">
+                      Enable JavaScript to navigate the sample screens. The
+                      initial order is visible below.
+                    </p></noscript
+                  >
+                  <section
+                    class="view"
+                    id="order"
+                    data-stage="1"
+                    aria-label="Item selection"
+                  >
+                    <div class="order-layout">
+                      <div class="catalog" tabindex="0" role="region" aria-label="Campus catalog">
+                        <div class="view-heading">
+                          <p class="eyebrow">GOOD FOOD, RIGHT HERE</p>
+                          <h1 tabindex="-1">What sounds good?</h1>
+                          <p class="muted">
+                            Your campus favorites, ready for a quick break.
+                          </p>
+                        </div>
+                        <div class="catalog-label">
+                          <span>THE CAMPUS MENU</span
+                          ><span>6 everyday favorites</span>
+                        </div>
+                        <div class="product-grid">
+                          <button
+                            type="button"
+                            class="product-card latte"
+                            disabled
+                            aria-label="Coffee, ₱45.00. Add product unavailable in this UI prototype."
+                          >
+                            <span class="product-art"
+                              ><svg
+                                class="product-icon"
+                                viewBox="0 0 80 80"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="3.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                              >
+                                <path d="M19 37h30v17a14 14 0 0 1-28 0V37Z" />
+                                <path
+                                  d="M49 40h5a7 7 0 0 1 0 14h-5M23 66h30M29 27v-9m12 9v-9"
+                                /></svg
+                              ><span class="art-orbit"></span></span
+                            ><span class="product-info"
+                              ><strong>Coffee</strong><span>Freshly brewed</span
+                              ><b>₱45.00</b
+                              ><span class="add-symbol" aria-hidden="true"
+                                >+</span
+                              ></span
+                            ></button
+                          ><button
+                            type="button"
+                            class="product-card sand"
+                            disabled
+                            aria-label="Sandwich, ₱50.00. Add product unavailable in this UI prototype."
+                          >
+                            <span class="product-art"
+                              ><svg
+                                class="product-icon"
+                                viewBox="0 0 80 80"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="3.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                              >
+                                <path
+                                  d="m16 51 24-29 24 29H16Zm0 0v10h48V51M26 47h28M29 38h22"
+                                /></svg
+                              ><span class="art-orbit"></span></span
+                            ><span class="product-info"
+                              ><strong>Sandwich</strong
+                              ><span>Your midday go-to</span><b>₱50.00</b
+                              ><span class="add-symbol" aria-hidden="true"
+                                >+</span
+                              ></span
+                            ></button
+                          ><button
+                            type="button"
+                            class="product-card rose"
+                            disabled
+                            aria-label="Soft Drink, ₱35.00. Add product unavailable in this UI prototype."
+                          >
+                            <span class="product-art"
+                              ><svg
+                                class="product-icon"
+                                viewBox="0 0 80 80"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="3.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                              >
+                                <path
+                                  d="m26 31 4 34h23l4-34H26Zm16 0 5-15h11M24 31h35M29 44h25"
+                                /></svg
+                              ><span class="art-orbit"></span></span
+                            ><span class="product-info"
+                              ><strong>Soft Drink</strong
+                              ><span>A refreshing classic</span><b>₱35.00</b
+                              ><span class="add-symbol" aria-hidden="true"
+                                >+</span
+                              ></span
+                            ></button
+                          ><button
+                            type="button"
+                            class="product-card sand"
+                            disabled
+                            aria-label="Cookies, ₱25.00. Add product unavailable in this UI prototype."
+                          >
+                            <span class="product-art"
+                              ><svg
+                                class="product-icon"
+                                viewBox="0 0 80 80"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="3.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                              >
+                                <circle cx="40" cy="42" r="24" />
+                                <circle cx="31" cy="32" r="2" />
+                                <circle cx="49" cy="36" r="2" />
+                                <circle cx="35" cy="48" r="2" />
+                                <circle cx="47" cy="55" r="2" />
+                                <circle cx="25" cy="48" r="2" /></svg
+                              ><span class="art-orbit"></span></span
+                            ><span class="product-info"
+                              ><strong>Cookies</strong
+                              ><span>A little sweet break</span><b>₱25.00</b
+                              ><span class="add-symbol" aria-hidden="true"
+                                >+</span
+                              ></span
+                            ></button
+                          ><button
+                            type="button"
+                            class="product-card blue"
+                            disabled
+                            aria-label="Bottled Water, ₱20.00. Add product unavailable in this UI prototype."
+                          >
+                            <span class="product-art"
+                              ><svg
+                                class="product-icon"
+                                viewBox="0 0 80 80"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="3.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                              >
+                                <path
+                                  d="M34 14h12v10l5 7v30a6 6 0 0 1-6 6H35a6 6 0 0 1-6-6V31l5-7V14ZM29 38h22M29 54h22M34 24h12"
+                                /></svg
+                              ><span class="art-orbit"></span></span
+                            ><span class="product-info"
+                              ><strong>Bottled Water</strong
+                              ><span>Stay refreshed</span><b>₱20.00</b
+                              ><span class="add-symbol" aria-hidden="true"
+                                >+</span
+                              ></span
+                            ></button
+                          ><button
+                            type="button"
+                            class="product-card cocoa"
+                            disabled
+                            aria-label="Chocolate, ₱25.00. Add product unavailable in this UI prototype."
+                          >
+                            <span class="product-art"
+                              ><svg
+                                class="product-icon"
+                                viewBox="0 0 80 80"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="3.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                              >
+                                <rect
+                                  x="23"
+                                  y="17"
+                                  width="34"
+                                  height="50"
+                                  rx="4"
+                                />
+                                <path d="M40 17v50M23 34h34M23 50h34" /></svg
+                              ><span class="art-orbit"></span></span
+                            ><span class="product-info"
+                              ><strong>Chocolate</strong
+                              ><span>Something to smile about</span><b>₱25.00</b
+                              ><span class="add-symbol" aria-hidden="true"
+                                >+</span
+                              ></span
+                            >
+                          </button>
+                        </div>
+                        <p class="placeholder-note">
+                          Product selection is a visual placeholder in this
+                          prototype.
+                        </p>
+                      </div>
+                      <aside
+                        class="surface cart-panel"
+                        aria-labelledby="cart-title"
+                      >
+                        <div class="panel-heading">
+                          <div>
+                            <p class="eyebrow">YOUR CAMPUS PICKS</p>
+                            <h2 id="cart-title">Current order</h2>
+                          </div>
+                          <svg
+                            class="icon"
+                            viewBox="0 0 80 80"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path
+                              d="M22 28h36l4 38H18l4-38Zm9 0v-6a9 9 0 0 1 18 0v6"
+                            />
+                          </svg>
+                        </div>
+                        <div class="cart-state" data-order="populated">
+<div class="cart-items" tabindex="0" role="region" aria-label="Scrollable cart items">
+                          <p class="item-count">4 items · 3 favorites</p>
+                          <article class="cart-item">
+                            <div class="cart-name">
+                              <strong>Coffee</strong
+                              ><button
+                                class="remove"
+                                type="button"
+                                disabled
+                                aria-label="Remove Coffee unavailable in this prototype"
+                              >
+                                <svg
+                                  class="icon"
+                                  viewBox="0 0 80 80"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="3.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  aria-hidden="true"
+                                >
+                                  <path
+                                    d="M25 27h30m-26 0 2 35h18l2-35M33 27v-7h14v7m-11 8v18m8-18v18"
+                                  />
+                                </svg>
+                              </button>
+                            </div>
+                            <p class="muted">₱45.00 each</p>
+                            <div class="cart-controls">
+                              <div class="quantity">
+                                <button
+                                  type="button"
+                                  disabled
+                                  aria-label="Decrease Coffee quantity unavailable in this prototype"
+                                >
+                                  −</button
+                                ><span aria-label="Quantity 2">2</span
+                                ><button
+                                  type="button"
+                                  disabled
+                                  aria-label="Increase Coffee quantity unavailable in this prototype"
+                                >
+                                  +
+                                </button>
+                              </div>
+                              <strong aria-label="Subtotal ₱90.00"
+                                >₱90.00</strong
+                              >
+                            </div>
+                          </article>
+                          <article class="cart-item">
+                            <div class="cart-name">
+                              <strong>Sandwich</strong
+                              ><button
+                                class="remove"
+                                type="button"
+                                disabled
+                                aria-label="Remove Sandwich unavailable in this prototype"
+                              >
+                                <svg
+                                  class="icon"
+                                  viewBox="0 0 80 80"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="3.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  aria-hidden="true"
+                                >
+                                  <path
+                                    d="M25 27h30m-26 0 2 35h18l2-35M33 27v-7h14v7m-11 8v18m8-18v18"
+                                  />
+                                </svg>
+                              </button>
+                            </div>
+                            <p class="muted">₱50.00 each</p>
+                            <div class="cart-controls">
+                              <div class="quantity">
+                                <button
+                                  type="button"
+                                  disabled
+                                  aria-label="Decrease Sandwich quantity unavailable in this prototype"
+                                >
+                                  −</button
+                                ><span aria-label="Quantity 1">1</span
+                                ><button
+                                  type="button"
+                                  disabled
+                                  aria-label="Increase Sandwich quantity unavailable in this prototype"
+                                >
+                                  +
+                                </button>
+                              </div>
+                              <strong aria-label="Subtotal ₱50.00"
+                                >₱50.00</strong
+                              >
+                            </div>
+                          </article>
+                          <article class="cart-item">
+                            <div class="cart-name">
+                              <strong>Soft Drink</strong
+                              ><button
+                                class="remove"
+                                type="button"
+                                disabled
+                                aria-label="Remove Soft Drink unavailable in this prototype"
+                              >
+                                <svg
+                                  class="icon"
+                                  viewBox="0 0 80 80"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="3.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  aria-hidden="true"
+                                >
+                                  <path
+                                    d="M25 27h30m-26 0 2 35h18l2-35M33 27v-7h14v7m-11 8v18m8-18v18"
+                                  />
+                                </svg>
+                              </button>
+                            </div>
+                            <p class="muted">₱35.00 each</p>
+                            <div class="cart-controls">
+                              <div class="quantity">
+                                <button
+                                  type="button"
+                                  disabled
+                                  aria-label="Decrease Soft Drink quantity unavailable in this prototype"
+                                >
+                                  −</button
+                                ><span aria-label="Quantity 1">1</span
+                                ><button
+                                  type="button"
+                                  disabled
+                                  aria-label="Increase Soft Drink quantity unavailable in this prototype"
+                                >
+                                  +
+                                </button>
+                              </div>
+                              <strong aria-label="Subtotal ₱35.00"
+                                >₱35.00</strong
+                              >
+                            </div>
+                          </article>
+                          </div>
+<footer class="cart-checkout">
+<div class="cart-total">
+                            <span>Total</span><strong>₱175.00</strong>
+                          </div>
+                          <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-view="review"
+                          >
+                            Review Order
+                            <svg
+                              class="icon"
+                              viewBox="0 0 80 80"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="3.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                            >
+                              <path d="M17 40h46M48 25l15 15-15 15" />
+                            </svg>
+                          </button>
+                          <p class="small-note">
+                            Fixed sample order · No items can be changed.
+                          </p>
+</footer>
+                        </div>
+                        <div class="cart-state" data-order="empty" hidden>
+<div class="cart-items" tabindex="0" role="region" aria-label="Scrollable cart items">
+                          <div class="empty-cart">
+                            <svg
+                              class="empty-icon"
+                              viewBox="0 0 80 80"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="3.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M22 28h36l4 38H18l4-38Zm9 0v-6a9 9 0 0 1 18 0v6"
+                              />
+                            </svg>
+                            <h3>Your order is empty</h3>
+                            <p>
+                              Campus favorites are waiting.<br />Use the preview
+                              controls below to see a sample order.
+                            </p>
+                          </div>
+                          </div>
+<footer class="cart-checkout">
+<div class="cart-total">
+                            <span>Total</span><strong>₱0.00</strong>
+                          </div>
+                          <button
+                            type="button"
+                            class="btn btn-primary w-100"
+                            disabled
+                          >
+                            Review Order
+                            <svg
+                              class="icon"
+                              viewBox="0 0 80 80"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="3.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                            >
+                              <path d="M17 40h46M48 25l15 15-15 15" />
+                            </svg>
+                          </button>
+                          <p class="small-note">
+                            Load a populated order using Prototype previews.
+                          </p>
+</footer>
+                        </div>
+                      </aside>
+                    </div>
+                  </section>
+                  <section
+                    class="view"
+                    id="review"
+                    data-stage="2"
+                    aria-label="Order summary"
+                    hidden
+                  >
+                    <div class="narrow">
+                      <div class="view-heading">
+                        <p class="eyebrow">ONE LAST LOOK</p>
+                        <h1 tabindex="-1">Review your order</h1>
+                        <p class="muted">
+                          Here’s your sample order. Everything look good?
+                        </p>
+                      </div>
+                      <div class="surface review-panel">
+                        <div class="panel-heading">
+                          <h2>Your order</h2>
+                          <span class="pill">4 items</span>
+                        </div>
+                        <div class="review-items" tabindex="0" role="region" aria-label="Scrollable order items">
+<div
+                          class="order-table"
+                          role="table"
+                          aria-label="Sample order"
+                        >
+                          <div class="table-head" role="row">
+                            <span role="columnheader">Product</span
+                            ><span role="columnheader">Quantity</span
+                            ><span role="columnheader">Unit price</span
+                            ><span role="columnheader">Subtotal</span>
+                          </div>
+                          <div class="table-row" role="row">
+                            <span role="cell"
+                              ><svg
+                                class="icon"
+                                viewBox="0 0 80 80"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="3.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                              >
+                                <path d="M19 37h30v17a14 14 0 0 1-28 0V37Z" />
+                                <path
+                                  d="M49 40h5a7 7 0 0 1 0 14h-5M23 66h30M29 27v-9m12 9v-9"
+                                /></svg
+                              ><strong>Coffee</strong></span
+                            ><span role="cell" data-label="Quantity">2</span
+                            ><span role="cell" data-label="Unit price"
+                              >₱45.00</span
+                            ><span role="cell" data-label="Subtotal"
+                              ><strong>₱90.00</strong></span
+                            >
+                          </div>
+                          <div class="table-row" role="row">
+                            <span role="cell"
+                              ><svg
+                                class="icon"
+                                viewBox="0 0 80 80"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="3.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                              >
+                                <path
+                                  d="m16 51 24-29 24 29H16Zm0 0v10h48V51M26 47h28M29 38h22"
+                                /></svg
+                              ><strong>Sandwich</strong></span
+                            ><span role="cell" data-label="Quantity">1</span
+                            ><span role="cell" data-label="Unit price"
+                              >₱50.00</span
+                            ><span role="cell" data-label="Subtotal"
+                              ><strong>₱50.00</strong></span
+                            >
+                          </div>
+                          <div class="table-row" role="row">
+                            <span role="cell"
+                              ><svg
+                                class="icon"
+                                viewBox="0 0 80 80"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="3.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                              >
+                                <path
+                                  d="m26 31 4 34h23l4-34H26Zm16 0 5-15h11M24 31h35M29 44h25"
+                                /></svg
+                              ><strong>Soft Drink</strong></span
+                            ><span role="cell" data-label="Quantity">1</span
+                            ><span role="cell" data-label="Unit price"
+                              >₱35.00</span
+                            ><span role="cell" data-label="Subtotal"
+                              ><strong>₱35.00</strong></span
+                            >
+                          </div>
+                        </div>
+</div>
+                        <footer class="review-checkout">
+<div class="review-total">
+                          <span
+                            >Total amount<small
+                              >All prices in Philippine pesos</small
+                            ></span
+                          ><strong>₱175.00</strong>
+                        </div>
+                      <div class="actions">
+                        <button
+                          type="button"
+                          class="btn btn-outline-secondary"
+                          data-view="order"
+                        >
+                          Back to Order
+                          <svg
+                            class="icon"
+                            viewBox="0 0 80 80"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M63 40H17m15-15L17 40l15 15" />
+                          </svg></button
+                        ><button
+                          type="button"
+                          class="btn btn-primary"
+                          data-view="methods"
+                        >
+                          Continue to Payment
+                          <svg
+                            class="icon"
+                            viewBox="0 0 80 80"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M17 40h46M48 25l15 15-15 15" />
+                          </svg>
+                        </button>
+                      </div>
+</footer>
+</div>
+                    </div>
+                  </section>
+                  <section
+                    class="view"
+                    id="methods"
+                    data-stage="3"
+                    aria-label="Payment method"
+                    hidden
+                  >
+                    <div class="narrow">
+                      <div class="view-heading">
+                        <p class="eyebrow">YOUR WAY TO PAY</p>
+                        <h1 tabindex="-1">Choose a payment method</h1>
+                        <p class="muted">
+                          Pick an option to explore its payment screen.
+                        </p>
+                      </div>
+                      <div class="amount-box">
+                        <span>Amount due</span><strong>₱175.00</strong>
+                      </div>
+                      <div class="payment-grid">
+                        <button
+                          type="button"
+                          class="surface method-card"
+                          data-view="cash"
+                        >
+                          <span class="method-icon cash"
+                            ><svg
+                              class="icon"
+                              viewBox="0 0 80 80"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="3.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                            >
+                              <rect
+                                x="12"
+                                y="24"
+                                width="56"
+                                height="33"
+                                rx="5"
+                              />
+                              <circle cx="40" cy="40" r="8" />
+                              <path d="M21 34v13m38-13v13" /></svg></span
+                          ><strong>Cash</strong
+                          ><span>Enter an amount and view sample change.</span
+                          ><span class="method-link"
+                            >Choose Cash
+                            <svg
+                              class="icon"
+                              viewBox="0 0 80 80"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="3.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                            >
+                              <path d="M17 40h46M48 25l15 15-15 15" /></svg
+                          ></span></button
+                        ><button
+                          type="button"
+                          class="surface method-card"
+                          data-view="qr"
+                        >
+                          <span class="method-icon qr"
+                            ><svg
+                              class="icon"
+                              viewBox="0 0 80 80"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="3.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M15 15h19v19H15Zm31 0h19v19H46ZM15 46h19v19H15Zm32 0h8v9h10v10H47ZM23 23h3m28 0h3M23 54h3"
+                              /></svg></span
+                          ><strong>QR Payment</strong
+                          ><span>A preview of paying with your e-wallet.</span
+                          ><span class="method-link"
+                            >Choose QR Payment
+                            <svg
+                              class="icon"
+                              viewBox="0 0 80 80"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="3.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                            >
+                              <path d="M17 40h46M48 25l15 15-15 15" /></svg
+                          ></span></button
+                        ><button
+                          type="button"
+                          class="surface method-card"
+                          data-view="card"
+                        >
+                          <span class="method-icon card"
+                            ><svg
+                              class="icon"
+                              viewBox="0 0 80 80"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="3.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                            >
+                              <rect
+                                x="12"
+                                y="22"
+                                width="56"
+                                height="38"
+                                rx="6"
+                              />
+                              <path d="M12 34h56M22 48h13m8 0h6" /></svg></span
+                          ><strong>Credit/Debit Card</strong
+                          ><span>Tap, insert, or swipe at the card reader.</span
+                          ><span class="method-link"
+                            >Choose Credit/Debit Card
+                            <svg
+                              class="icon"
+                              viewBox="0 0 80 80"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="3.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                            >
+                              <path d="M17 40h46M48 25l15 15-15 15" /></svg
+                          ></span>
+                        </button>
+                      </div>
+                      <div class="actions">
+                        <button
+                          type="button"
+                          class="btn btn-outline-secondary"
+                          data-view="review"
+                        >
+                          Back to Review
+                          <svg
+                            class="icon"
+                            viewBox="0 0 80 80"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M63 40H17m15-15L17 40l15 15" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </section>
+                  <section
+                    class="view"
+                    id="cash"
+                    data-stage="3"
+                    aria-label="Cash payment"
+                    hidden
+                  >
+                    <div class="narrow">
+                      <div class="view-heading">
+                        <p class="eyebrow">PAYMENT / CASH</p>
+                        <h1 tabindex="-1">Cash payment</h1>
+                        <p class="muted">
+                          Explore the cash screen using fixed payment examples.
+                        </p>
+                      </div>
+                      <div class="cash-layout">
+                        <div class="surface payment-panel">
+                          <div class="amount-box">
+                            <span>Total due</span><strong>₱175.00</strong>
+                          </div>
+                          <label for="amount-paid"
+                            >Amount paid
+                            <span class="muted"
+                              >(editable preview only)</span
+                            ></label
+                          >
+                          <div class="input-wrap">
+                            <span aria-hidden="true">₱</span
+                            ><input
+                              id="amount-paid"
+                              type="text"
+                              inputmode="decimal"
+                              value="200.00"
+                              aria-describedby="input-note cash-error"
+                              autocomplete="off"
+                            />
+                          </div>
+                          <p id="input-note" class="small-note">
+                            Typing does not change the payment or receipt
+                            sample.
+                          </p>
+                          <div
+                            class="error-box"
+                            id="cash-error"
+                            data-cash="error"
+                            hidden
+                          >
+                            <strong
+                              >! Insufficient payment — sample state</strong
+                            >
+                            <p>
+                              ₱100.00 paid against ₱175.00 due. Short by ₱75.00.
+                              This message is static.
+                            </p>
+                          </div>
+                          <p class="control-label">
+                            Quick amounts
+                            <span class="muted">· placeholders</span>
+                          </p>
+                          <div class="quick-amounts">
+                            <button
+                              type="button"
+                              disabled
+                              aria-label="Exact quick amount unavailable in this prototype"
+                            >
+                              Exact</button
+                            ><button
+                              type="button"
+                              disabled
+                              aria-label="₱200 quick amount unavailable in this prototype"
+                            >
+                              ₱200</button
+                            ><button
+                              type="button"
+                              disabled
+                              aria-label="₱500 quick amount unavailable in this prototype"
+                            >
+                              ₱500</button
+                            ><button
+                              type="button"
+                              disabled
+                              aria-label="₱1,000 quick amount unavailable in this prototype"
+                            >
+                              ₱1,000
+                            </button>
+                          </div>
+                          <div class="change-box" data-cash="normal">
+                            <span>Sample change</span><strong>₱25.00</strong
+                            ><small>₱200.00 paid · ₱175.00 total</small>
+                          </div>
+                          <div
+                            class="change-box pending"
+                            data-cash="error"
+                            hidden
+                          >
+                            <span>Change unavailable</span><strong>—</strong
+                            ><small>Insufficient-payment visual preview</small>
+                          </div>
+                        </div>
+                        <div class="surface keypad-panel">
+                          <p class="control-label">
+                            Numeric keypad
+                            <span class="muted">· unavailable</span>
+                          </p>
+                          <div class="keypad">
+                            <button
+                              type="button"
+                              disabled
+                              aria-label="Keypad 1 unavailable in this prototype"
+                            >
+                              1</button
+                            ><button
+                              type="button"
+                              disabled
+                              aria-label="Keypad 2 unavailable in this prototype"
+                            >
+                              2</button
+                            ><button
+                              type="button"
+                              disabled
+                              aria-label="Keypad 3 unavailable in this prototype"
+                            >
+                              3</button
+                            ><button
+                              type="button"
+                              disabled
+                              aria-label="Keypad 4 unavailable in this prototype"
+                            >
+                              4</button
+                            ><button
+                              type="button"
+                              disabled
+                              aria-label="Keypad 5 unavailable in this prototype"
+                            >
+                              5</button
+                            ><button
+                              type="button"
+                              disabled
+                              aria-label="Keypad 6 unavailable in this prototype"
+                            >
+                              6</button
+                            ><button
+                              type="button"
+                              disabled
+                              aria-label="Keypad 7 unavailable in this prototype"
+                            >
+                              7</button
+                            ><button
+                              type="button"
+                              disabled
+                              aria-label="Keypad 8 unavailable in this prototype"
+                            >
+                              8</button
+                            ><button
+                              type="button"
+                              disabled
+                              aria-label="Keypad 9 unavailable in this prototype"
+                            >
+                              9</button
+                            ><button
+                              type="button"
+                              disabled
+                              aria-label="Keypad Clear unavailable in this prototype"
+                            >
+                              Clear</button
+                            ><button
+                              type="button"
+                              disabled
+                              aria-label="Keypad 0 unavailable in this prototype"
+                            >
+                              0</button
+                            ><button
+                              type="button"
+                              disabled
+                              aria-label="Keypad ⌫ unavailable in this prototype"
+                            >
+                              ⌫
+                            </button>
+                          </div>
+                          <div data-cash="normal">
+                            <button
+                              type="button"
+                              class="btn btn-primary"
+                              data-view="success"
+                              data-payment="cash"
+                            >
+                              Pay Now
+                              <svg
+                                class="icon"
+                                viewBox="0 0 80 80"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="3.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                              >
+                                <path d="M17 40h46M48 25l15 15-15 15" />
+                              </svg>
+                            </button>
+                            <p class="small-note">
+                              Opens a static success preview.
+                            </p>
+                          </div>
+                          <div data-cash="error" hidden>
+                            <button
+                              type="button"
+                              class="btn btn-primary w-100"
+                              disabled
+                            >
+                              Pay Now
+                              <svg
+                                class="icon"
+                                viewBox="0 0 80 80"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="3.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                              >
+                                <path d="M17 40h46M48 25l15 15-15 15" />
+                              </svg>
+                            </button>
+                            <p class="small-note">
+                              Unavailable in this predefined error state.
+                            </p>
+                          </div>
+                          <button
+                            type="button"
+                            class="btn btn-outline-secondary"
+                            data-view="methods"
+                          >
+                            Change Payment Method
+                            <svg
+                              class="icon"
+                              viewBox="0 0 80 80"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="3.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                            >
+                              <path d="M63 40H17m15-15L17 40l15 15" />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  <section
+                    class="view"
+                    id="qr"
+                    data-stage="3"
+                    aria-label="QR payment"
+                    hidden
+                  >
+                    <div class="narrow">
+                      <div class="view-heading">
+                        <p class="eyebrow">PAYMENT / QR</p>
+                        <h1 tabindex="-1">Scan. Pay. Back to your day.</h1>
+                        <p class="muted">
+                          A visual preview of the QR payment experience.
+                        </p>
+                      </div>
+                      <div class="surface qr-layout">
+                        <div class="qr-column">
+                          <div class="qr-placeholder">
+                            <svg
+                              class="qr-art"
+                              viewBox="0 0 80 80"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="3.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M15 15h19v19H15Zm31 0h19v19H46ZM15 46h19v19H15Zm32 0h8v9h10v10H47ZM23 23h3m28 0h3M23 54h3"
+                              /></svg
+                            ><strong>QR PLACEHOLDER</strong
+                            ><span>Nonfunctional · Do not scan</span>
+                          </div>
+                          <p class="reference muted">QR-TXN-2026-00126</p>
+                        </div>
+                        <div>
+                          <div class="amount-box">
+                            <span>Amount to pay</span><strong>₱175.00</strong>
+                          </div>
+                          <h2>Pay with your e-wallet</h2>
+                          <ol class="instructions">
+                            <li>
+                              Scan the QR code using a supported payment app.
+                            </li>
+                            <li>
+                              Check the ₱175.00 amount and approve in your app.
+                            </li>
+                            <li>Confirm payment to view the success screen.</li>
+                          </ol>
+                          <p class="preview-note">
+                            Preview only. This QR graphic cannot receive
+                            payments.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="actions">
+                        <button
+                          type="button"
+                          class="btn btn-outline-secondary"
+                          data-view="methods"
+                        >
+                          Back
+                          <svg
+                            class="icon"
+                            viewBox="0 0 80 80"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M63 40H17m15-15L17 40l15 15" />
+                          </svg></button
+                        ><button
+                          type="button"
+                          class="btn btn-primary"
+                          data-view="success"
+                          data-payment="qr"
+                        >
+                          Confirm Payment
+                          <svg
+                            class="icon"
+                            viewBox="0 0 80 80"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M17 40h46M48 25l15 15-15 15" />
+                          </svg>
+                        </button>
+                      </div>
+                      <p class="small-note text-end">
+                        Confirm Payment opens a static success preview.
+                      </p>
+                    </div>
+                  </section>
+                  <section
+                    class="view"
+                    id="card"
+                    data-stage="3"
+                    aria-label="Credit or debit card payment"
+                    hidden
+                  >
+                    <div class="narrow">
+                      <div class="view-heading">
+                        <p class="eyebrow">PAYMENT / CARD</p>
+                        <h1 tabindex="-1">Credit/Debit Card</h1>
+                        <p class="muted">
+                          Your card, your choice. A preview of the terminal
+                          experience.
+                        </p>
+                      </div>
+                      <div class="surface card-layout">
+                        <div class="terminal-column">
+                          <svg
+                            class="terminal-art"
+                            viewBox="0 0 260 300"
+                            role="img"
+                            aria-label="Illustration of a card payment terminal"
+                          >
+                            <ellipse
+                              cx="130"
+                              cy="279"
+                              rx="90"
+                              ry="12"
+                              fill="#d8ded7"
+                            />
+                            <rect
+                              x="56"
+                              y="15"
+                              width="148"
+                              height="257"
+                              rx="22"
+                              fill="#243d33"
+                            />
+                            <rect
+                              x="65"
+                              y="22"
+                              width="130"
+                              height="242"
+                              rx="17"
+                              fill="#304c40"
+                            />
+                            <rect
+                              x="78"
+                              y="45"
+                              width="104"
+                              height="85"
+                              rx="8"
+                              fill="#e2ecd8"
+                            />
+                            <path
+                              d="M101 77q29-30 58 0m-47 11q18-20 36 0m-25 11q7-9 14 0"
+                              fill="none"
+                              stroke="#456d52"
+                              stroke-width="4"
+                              stroke-linecap="round"
+                            />
+                            <circle cx="130" cy="108" r="3" fill="#456d52" />
+                            <text
+                              x="130"
+                              y="154"
+                              text-anchor="middle"
+                              font-family="sans-serif"
+                              font-size="11"
+                              fill="#e2ecd8"
+                            >
+                              CS CAMPUS STORE
+                            </text>
+                            <g fill="#a4b9a9">
+                              <rect
+                                x="81"
+                                y="172"
+                                width="28"
+                                height="16"
+                                rx="4"
+                              />
+                              <rect
+                                x="116"
+                                y="172"
+                                width="28"
+                                height="16"
+                                rx="4"
+                              />
+                              <rect
+                                x="151"
+                                y="172"
+                                width="28"
+                                height="16"
+                                rx="4"
+                              />
+                              <rect
+                                x="81"
+                                y="195"
+                                width="28"
+                                height="16"
+                                rx="4"
+                              />
+                              <rect
+                                x="116"
+                                y="195"
+                                width="28"
+                                height="16"
+                                rx="4"
+                              />
+                              <rect
+                                x="151"
+                                y="195"
+                                width="28"
+                                height="16"
+                                rx="4"
+                              />
+                              <rect
+                                x="81"
+                                y="218"
+                                width="28"
+                                height="16"
+                                rx="4"
+                              />
+                              <rect
+                                x="116"
+                                y="218"
+                                width="28"
+                                height="16"
+                                rx="4"
+                              />
+                              <rect
+                                x="151"
+                                y="218"
+                                width="28"
+                                height="16"
+                                rx="4"
+                              />
+                            </g>
+                            <rect
+                              x="81"
+                              y="241"
+                              width="98"
+                              height="5"
+                              rx="2"
+                              fill="#15251d"
+                            /></svg
+                          ><span class="pill">Card terminal illustration</span>
+                        </div>
+                        <div>
+                          <div class="amount-box">
+                            <span>Amount due</span><strong>₱175.00</strong>
+                          </div>
+                          <div data-card="ready">
+                            <span class="status-label ready"
+                              >● Ready for card</span
+                            >
+                            <h2>Tap, insert, or swipe.</h2>
+                            <p class="muted">
+                              Present your card at the reader to pay ₱175.00.
+                            </p>
+                          </div>
+                          <div data-card="processing" hidden>
+                            <span class="status-label processing"
+                              >◷ Processing — sample state</span
+                            >
+                            <h2>Processing payment…</h2>
+                            <p class="muted">
+                              Do not remove your card until the payment is
+                              complete.
+                            </p>
+                          </div>
+                          <p class="preview-note">
+                            No terminal is connected. Processing is a static
+                            visual state.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="actions">
+                        <button
+                          type="button"
+                          class="btn btn-outline-secondary"
+                          data-view="methods"
+                        >
+                          Back
+                          <svg
+                            class="icon"
+                            viewBox="0 0 80 80"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M63 40H17m15-15L17 40l15 15" />
+                          </svg></button
+                        ><button
+                          type="button"
+                          class="btn btn-primary"
+                          data-view="success"
+                          data-payment="card"
+                        >
+                          Process Payment
+                          <svg
+                            class="icon"
+                            viewBox="0 0 80 80"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M17 40h46M48 25l15 15-15 15" />
+                          </svg>
+                        </button>
+                      </div>
+                      <p class="small-note text-end">
+                        Process Payment opens a static success preview.
+                      </p>
+                    </div>
+                  </section>
+                  <section
+                    class="view"
+                    id="success"
+                    data-stage="3"
+                    aria-label="Payment successful preview"
+                    hidden
+                  >
+                    <div class="success-layout">
+                      <div class="success-intro">
+                        <span class="success-icon"
+                          ><svg
+                            class="icon"
+                            viewBox="0 0 80 80"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="m23 40 12 12 23-25" /></svg
+                        ></span>
+                        <div class="view-heading">
+                          <p class="eyebrow">STATIC SUCCESS PREVIEW</p>
+                          <h1 tabindex="-1">You’re all set!</h1>
+                          <p class="muted">
+                            Payment successful. Thanks for stopping by.
+                          </p>
+                        </div>
+                        <p class="preview-note">
+                          This is a sample confirmation. No payment has been
+                          processed.
+                        </p>
+                      </div>
+                      <div class="surface success-details">
+                        <h2>Payment Successful</h2>
+                        <span class="status-label ready"
+                          >✓ Sample payment complete</span
+                        >
+                        <dl class="payment-details">
+                          <div>
+                            <dt>Transaction amount</dt>
+                            <dd>₱175.00</dd>
+                          </div>
+                          <div>
+                            <dt>Payment method</dt>
+                            <dd>
+                              <span data-method="cash">Cash</span
+                              ><span data-method="qr" hidden>QR Payment</span
+                              ><span data-method="card" hidden
+                                >Credit/Debit Card</span
+                              >
+                            </dd>
+                          </div>
+                          <div>
+                            <dt>Amount paid</dt>
+                            <dd>
+                              <span data-method="cash">₱200.00</span
+                              ><span data-method="qr card" hidden>₱175.00</span>
+                            </dd>
+                          </div>
+                          <div>
+                            <dt>Change</dt>
+                            <dd>
+                              <span data-method="cash">₱25.00</span
+                              ><span data-method="qr card" hidden>₱0.00</span>
+                            </dd>
+                          </div>
+                          <div>
+                            <dt>Sample reference</dt>
+                            <dd class="reference">
+                              <span data-method="cash">TXN-2026-00125</span
+                              ><span data-method="qr" hidden
+                                >QR-TXN-2026-00126</span
+                              ><span data-method="card" hidden
+                                >CARD-TXN-2026-00127</span
+                              >
+                            </dd>
+                          </div>
+                        </dl>
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          data-view="receipt"
+                        >
+                          View Receipt
+                          <svg
+                            class="icon"
+                            viewBox="0 0 80 80"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M17 40h46M48 25l15 15-15 15" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </section>
+                  <section
+                    class="view"
+                    id="receipt"
+                    data-stage="4"
+                    aria-label="Digital receipt"
+                    hidden
+                  >
+                    <div class="receipt-layout">
+                      <article class="receipt-paper">
+                        <div class="receipt-brand">
+                          <svg
+                            class="icon"
+                            viewBox="0 0 80 80"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path
+                              d="M22 28h36l4 38H18l4-38Zm9 0v-6a9 9 0 0 1 18 0v6"
+                            />
+                          </svg>
+                          <h2>CS Campus Store</h2>
+                          <p>SELF-SERVICE KIOSK<br />Sample digital receipt</p>
+                        </div>
+                        <div class="receipt-date">
+                          <span>Date / time (fixed sample)</span
+                          ><time datetime="2026-10-06T10:42:00+08:00"
+                            >October 6, 2026 · 10:42 AM PHT</time
+                          >
+                        </div>
+                        <div class="receipt-items">
+                          <div class="receipt-row receipt-labels">
+                            <span>ITEM / QTY × UNIT PRICE</span
+                            ><span>SUBTOTAL</span>
+                          </div>
+                          <div class="receipt-row">
+                            <span
+                              ><strong>Coffee</strong
+                              ><small>2 × ₱45.00</small></span
+                            ><strong>₱90.00</strong>
+                          </div>
+                          <div class="receipt-row">
+                            <span
+                              ><strong>Sandwich</strong
+                              ><small>1 × ₱50.00</small></span
+                            ><strong>₱50.00</strong>
+                          </div>
+                          <div class="receipt-row">
+                            <span
+                              ><strong>Soft Drink</strong
+                              ><small>1 × ₱35.00</small></span
+                            ><strong>₱35.00</strong>
+                          </div>
+                        </div>
+                        <div class="cart-total">
+                          <span>TOTAL</span><strong>₱175.00</strong>
+                        </div>
+                        <dl class="payment-details">
+                          <div>
+                            <dt>Transaction amount</dt>
+                            <dd>₱175.00</dd>
+                          </div>
+                          <div>
+                            <dt>Payment method</dt>
+                            <dd>
+                              <span data-method="cash">Cash</span
+                              ><span data-method="qr" hidden>QR Payment</span
+                              ><span data-method="card" hidden
+                                >Credit/Debit Card</span
+                              >
+                            </dd>
+                          </div>
+                          <div>
+                            <dt>Amount paid</dt>
+                            <dd>
+                              <span data-method="cash">₱200.00</span
+                              ><span data-method="qr card" hidden>₱175.00</span>
+                            </dd>
+                          </div>
+                          <div>
+                            <dt>Change</dt>
+                            <dd>
+                              <span data-method="cash">₱25.00</span
+                              ><span data-method="qr card" hidden>₱0.00</span>
+                            </dd>
+                          </div>
+                          <div>
+                            <dt>Sample reference</dt>
+                            <dd class="reference">
+                              <span data-method="cash">TXN-2026-00125</span
+                              ><span data-method="qr" hidden
+                                >QR-TXN-2026-00126</span
+                              ><span data-method="card" hidden
+                                >CARD-TXN-2026-00127</span
+                              >
+                            </dd>
+                          </div>
+                        </dl>
+                        <div class="receipt-status">
+                          ✓ Payment Successful
+                          <small>Static sample status</small>
+                        </div>
+                        <p class="receipt-thanks">
+                          Thanks for making us part of your day.
+                        </p>
+                      </article>
+                      <div class="receipt-intro">
+                        <div class="view-heading">
+                          <p class="eyebrow">
+                            A LITTLE SOMETHING FOR YOUR RECORDS
+                          </p>
+                          <h1 tabindex="-1">Your digital receipt</h1>
+                          <p class="muted">
+                            Your sample purchase, all in one place.
+                          </p>
+                        </div>
+                        <p class="muted">
+                          This receipt shows fixed sample data. Start a new
+                          transaction to preview the empty-order screen.
+                        </p>
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          data-view="order"
+                          data-new-transaction
+                        >
+                          New Transaction
+                          <svg
+                            class="icon"
+                            viewBox="0 0 80 80"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M17 40h46M48 25l15 15-15 15" />
+                          </svg>
+                        </button>
+                        <p class="small-note">
+                          Digital preview only · Receipt printing is deferred.
+                        </p>
+                      </div>
+                    </div>
+                  </section>
+                </main>
+                <footer class="app-footer">
+                  <span>CS Campus Store</span
+                  ><span>Made for your campus day.</span>
+                </footer>
+                <aside
+                  class="preview-tools"
+                  aria-label="Prototype preview controls"
+                >
+                  <details>
+                    <summary>
+                      Prototype previews
+                      <span>Explore alternate UI states</span>
+                    </summary>
+                    <div class="preview-content">
+                      <p>
+                        Design controls only. These buttons switch predefined
+                        screens and do not create transactions.
+                      </p>
+                      <div class="preview-buttons">
+                        <button type="button" data-preview="populated">
+                          Populated order</button
+                        ><button type="button" data-preview="empty">
+                          Empty order</button
+                        ><button type="button" data-preview="cash-normal">
+                          Cash: normal</button
+                        ><button type="button" data-preview="cash-error">
+                          Cash: insufficient</button
+                        ><button type="button" data-preview="card-ready">
+                          Card: ready</button
+                        ><button type="button" data-preview="card-processing">
+                          Card: processing
+                        </button>
+                      </div>
+                    </div>
+                  </details>
+                </aside>
+                <div
+                  class="visually-hidden"
+                  role="status"
+                  id="view-announcement"
+                  aria-live="polite"
+                ></div>
+                <div
+                  class="visually-hidden"
+                  role="status"
+                  id="view-announcement"
+                  aria-live="polite"
+                ></div>
+              </body>
+            </html>
+>>>>>>> 5ba9729c86edd9d68e308a49098869e974accd3d
           </div>
         </div>
       </details>

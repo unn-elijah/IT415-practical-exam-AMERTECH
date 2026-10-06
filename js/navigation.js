@@ -77,6 +77,7 @@
     document.title = `${next.getAttribute('aria-label')} · CS Campus Store UI Prototype`;
     document.getElementById('view-announcement').textContent = next.getAttribute('aria-label');
     if (focus) {
+      next.closest('.app-shell').scrollTop = 0;
       next.querySelector('h1').focus({ preventScroll: true });
       window.scrollTo({ top: 0, behavior: 'instant' });
     }
