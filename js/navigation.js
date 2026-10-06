@@ -120,7 +120,8 @@
     }
     // Only the preceding journey screen can open checkout or a success fixture.
     // Explicit prototype previews above are intentionally independent of this flow.
-    if (control.dataset.view === 'review' && orderState === 'empty') return;
+    if (control.dataset.view === 'review' &&
+        document.querySelector('.cart-panel [data-order="populated"]').hidden) return;
     if (control.dataset.view === 'success' &&
         !['cash', 'qr', 'card'].includes(currentView)) return;
     if (control.dataset.view === 'receipt' && currentView !== 'success') return;

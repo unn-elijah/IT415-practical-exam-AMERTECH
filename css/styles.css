@@ -2127,3 +2127,54 @@ h3 {
   outline: 2px solid #146681;
   outline-offset: -2px;
 }
+
+#payment-amount-due {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+#cash .keypad button,
+#cash .quick-amounts button {
+  min-height: 64px;
+  font-size: 20px;
+  color: var(--ink);
+}
+#cash-received {
+  display: block;
+  padding: 16px;
+  font-size: 32px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+#cash .input-wrap > span { display: none; }
+#cash .amount-box strong,
+#cash-change { font-size: 32px; }
+
+#success .view-heading h1,
+#success .success-details h2 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+#success .payment-details dt { font-size: 16px; }
+#success .payment-details dd {
+  font-size: 20px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+#success [data-new-order] {
+  min-height: 64px;
+  margin-top: 8px;
+  font-size: 18px;
+}
+#success .success-layout { margin: 8px auto; gap: 16px; }
+#success .success-details { padding: 16px; }
+#success .view-heading { margin-bottom: 8px; }
+#success .success-icon { margin-bottom: 8px; }
+#success .payment-details { margin: 8px 0 12px; }
+#success .payment-details > div { padding: 8px 0; }
+#success .preview-note { margin-block: 8px; }

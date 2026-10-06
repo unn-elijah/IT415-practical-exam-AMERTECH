@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campus Store QR Payment</title>
+  <style>
+    body { font-family: sans-serif; max-width: 420px; margin: 32px auto; padding: 20px; }
+    input, button { box-sizing: border-box; width: 100%; min-height: 56px; font-size: 22px; margin-top: 12px; }
+    label { display: block; } #total { font-size: 28px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Campus Store Payment</h1>
+  <p>Prototype payment confirmation</p>
+  <p id="total"></p>
+  <form id="payment-form">
+    <label for="paid">Amount paid (₱)</label>
+    <input id="paid" type="text" inputmode="decimal" autocomplete="off" required>
+    <button id="done" type="submit" disabled>Done</button>
+  </form>
+  <p id="message" role="status"></p>
+  <script src="js/pay.js" defer></script>
+</body>
+</html>
