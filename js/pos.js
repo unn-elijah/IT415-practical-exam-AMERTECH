@@ -474,12 +474,22 @@
     reviewTable.querySelectorAll('.table-row').forEach(row => row.remove());
     cart.forEach(item => {
       const row = reviewRowTemplate.cloneNode(true);
+      row.dataset.productId = item.id;
       row.querySelector('[role="cell"] strong').textContent = item.name;
       const card = document.querySelector(`.product-card[data-product-id="${item.id}"]`);
       const icon = card.querySelector('svg.product-icon').cloneNode(true);
       icon.setAttribute('class', 'icon');
       row.querySelector('svg.icon').replaceWith(icon);
-      row.querySelector('[data-label="Quantity"]').textContent = item.quantity;
+      const quantity = rowTemplate.querySelector('.quantity').cloneNode(true);
+      quantity.querySelector('span').textContent = item.quantity;
+      quantity.querySelector('span').setAttribute('aria-label', `Quantity ${item.quantity}`);
+      quantity.querySelectorAll('button').forEach((button, index) => {
+        button.disabled = false;
+        button.dataset.change = index === 0 ? '-1' : '1';
+        button.setAttribute('aria-label',
+          `${index === 0 ? 'Decrease' : 'Increase'} ${item.name} quantity`);
+      });
+      row.querySelector('[data-label="Quantity"]').replaceChildren(quantity);
       row.querySelector('[data-label="Unit price"]').textContent = formatMoney(item.price);
       row.querySelector('[data-label="Subtotal"] strong').textContent =
         formatMoney(item.price * item.quantity);
@@ -490,6 +500,7 @@
       `${count} ${count === 1 ? 'item' : 'items'}`;
     reviewTotalCentavos = getTotal();
     review.querySelector('.review-total strong').textContent = formatMoney(reviewTotalCentavos);
+    review.querySelector('[data-view="methods"]').disabled = cart.length === 0;
   }
 
   function renderCart() {
@@ -551,14 +562,16 @@
   // Registered after navigation.js: its screen changes finish before this runs.
   document.addEventListener('click', event => {
     const card = event.target.closest('.product-card');
-    const button = event.target.closest('.cart-panel .quantity button');
+    const button = event.target.closest('.cart-panel .quantity button, #review .quantity button');
     const removeButton = event.target.closest('.cart-panel .remove');
     if (card) addItem(card.dataset.productId);
     else if (removeButton) {
       removeItem(removeButton.closest('.cart-item').dataset.productId);
     }
     else if (button) {
-      changeQuantity(button.closest('.cart-item').dataset.productId, Number(button.dataset.change));
+      const inReview = review.contains(button);
+      changeQuantity(button.closest('.cart-item, .table-row').dataset.productId, Number(button.dataset.change));
+      if (inReview && cart.length === 0) review.querySelector('[data-view="order"]').click();
     } else if (event.target.closest('[data-view], [data-preview]')) {
       const control = event.target.closest('[data-view], [data-preview]');
       // Run after navigation's fixture reset so it cannot restore old cash values.
