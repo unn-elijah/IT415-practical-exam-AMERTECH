@@ -16,9 +16,18 @@ Double-click `index.html` or open it in a modern browser such as Chrome, Edge, o
 
 - `index.html`: semantic screens, inline SVG illustrations, fixed order and payment fixtures.
 - `css/styles.css`: responsive layout, touch targets, status styles, and keyboard focus.
-- `js/navigation.js`: screen changes, progress updates, focus management, and predefined visual-state previews only.
+- `js/navigation.js`: screen changes, progress updates, focus management, catalog search/category visibility, and predefined visual-state previews.
 - `assets/bootstrap.min.css`: locally bundled Bootstrap 5.3.3 CSS, including its MIT license header.
 - `README.md`: usage, scope, and verification notes. The original contributor attribution is preserved above.
+- `tests/kiosk.cjs`: optional Playwright checks for navigation, catalog controls, fixtures, accessibility basics, and responsive rendering. Not required to run the kiosk.
+
+### Redesigned interface and catalog
+
+The application sits in a rounded white frame on a soft peach background. A light header, journey sidebar, pale gray catalog, and white cart panel create the desktop composition. Orange category pills and primary actions, charcoal text, neutral borders, and reusable design tokens coordinate all eight views. Six local SVG product illustrations also appear as cart thumbnails. Typography uses an offline system font stack.
+
+**Search the menu** matches product names and short descriptions, ignoring case and leading/trailing spaces. Search combines with the selected **All**, **Drinks**, **Food**, or **Snacks** category. Drinks contains Coffee, Soft Drink, and Bottled Water; Food contains Sandwich; Snacks contains Cookies and Chocolate. A no-results state includes **Show all products**, which clears both controls. Filtering changes only visible menu cards; it never changes quantities or the fixed ₱175 order.
+
+The desktop catalog uses compact horizontal cards in two columns, alongside a 190px sidebar and 320px cart. At narrower desktop/tablet widths the catalog becomes one column and the journey becomes a compact horizontal indicator. Phones stack the catalog and cart, with an in-flow cart summary link that moves focus to the cart. No fixed checkout overlay obscures content. All panels scroll naturally, including on short displays.
 
 ### Screens and navigation
 
@@ -31,6 +40,7 @@ Each branch has its own payment view. **Pay Now**, **Confirm Payment**, and **Pr
 - **Change Payment Method** on Cash and **Back** on QR/Card return to payment-method selection.
 - The store identity also returns to Order.
 - Progress is **1 Order** for item selection, **2 Review** for summary, **3 Payment** for method selection, payment screens, and the success preview, and **4 Receipt** for the digital receipt. The current stage has `aria-current="step"` and a highlighted number.
+- The sidebar shows the current and completed stages as informational indicators; it has no shortcuts that bypass Review or select an inconsistent payment branch.
 
 Navigation moves keyboard focus to the new screen heading and scrolls to the top. Standard vertical scrolling keeps all content and actions reachable on smaller screens. Keyboard users can use the skip link, Tab/Shift+Tab, and Enter/Space on buttons and the preview disclosure.
 
@@ -45,7 +55,7 @@ Expand **Prototype previews** below the page footer. These design controls are s
 - **Card: ready**: instructions to tap, insert, or swipe.
 - **Card: processing**: a static processing message that never automatically completes. Process Payment still opens the predefined success preview.
 
-Entering Cash or Card from the method chooser shows its normal/ready state. Returning to Order preserves the selected order fixture. New Transaction restores the empty-order fixture and default cash/card preview states.
+Entering Cash or Card from the method chooser shows its normal/ready state. Returning to Order preserves the selected order fixture. New Transaction restores the empty-order fixture and default cash/card preview states, and resets catalog search/category controls.
 
 ### Fixed sample data
 
@@ -78,6 +88,6 @@ Bootstrap **5.3.3 CSS** is included locally in `assets/bootstrap.min.css`, sourc
 
 ### Verification
 
-Verification uses headless Chrome with a temporary Playwright script from the available development runtime; neither is required to open the prototype. Navigation checks cover all three payment branches, preceding-view Back actions, Continue, View Receipt, New Transaction, active progress, and matching method-specific success/receipt values. State checks cover empty/populated orders, normal/insufficient cash, and ready/processing card screens, including that input editing and disabled keypad controls cannot modify sample payment values.
+Verification uses headless Microsoft Edge and the optional `tests/kiosk.cjs` Playwright script; neither is required to open the prototype. With Node, Playwright, and Edge available, run `node tests/kiosk.cjs`. Set `PLAYWRIGHT_MODULE` to an absolute module path if using a bundled development runtime. Screenshots are written to the ignored `.verification` directory. Navigation checks cover all three payment branches, preceding-view Back actions, Continue, View Receipt, New Transaction, active progress, and matching method-specific success/receipt values. State checks cover empty/populated orders, normal/insufficient cash, and ready/processing card screens, including that input editing and disabled keypad controls cannot modify sample payment values. Each category is checked with matching, nonmatching, case-insensitive, and whitespace-padded searches; the fixed order remains unchanged.
 
-Responsive checks cover all screens and alternate states at **1440 × 1000**, **768 × 1024**, **390 × 844**, and **320 × 700**. They check horizontal overflow, at least 48 × 48 CSS-pixel button/input targets, accessible button names, stylesheet loading, JavaScript errors, and visible keyboard focus. Rendered screenshots were also visually reviewed. These checks verify this UI phase; they do not verify deferred transaction functionality.
+Responsive checks cover all screens and alternate states at **1440 × 1000**, **768 × 1024**, **390 × 844**, and **320 × 700**. They check horizontal overflow, at least 48 × 48 CSS-pixel interactive targets, accessible control names, local assets, JavaScript errors, heading focus on screen changes, visible keyboard focus, and reduced motion. Rendered screenshots were also visually reviewed. These checks verify this UI phase; they do not verify deferred transaction functionality or substitute for a full assistive-technology audit.
