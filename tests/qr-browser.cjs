@@ -89,6 +89,17 @@ const server = http.createServer(async (req, res) => {
     await kiosk.waitForFunction(() => !document.querySelector('#qr [data-payment="qr"]').disabled);
     await confirm.click();
     await kiosk.locator('#success:visible').waitFor();
+    assert.equal(await kiosk.locator('#feedback-modal').isVisible(), false);
+    await kiosk.keyboard.press('Enter');
+    await kiosk.locator('#feedback-modal[open]').waitFor();
+    await kiosk.getByRole('button', { name: 'Close feedback', exact: true }).click();
+    await kiosk.keyboard.press('Enter');
+    assert.equal(await kiosk.locator('#feedback-modal').isVisible(), false);
+    // A fresh payment allows a new prompt; tap opens it without adding a UI control.
+    await kiosk.evaluate(() => document.dispatchEvent(new CustomEvent('transaction-ready', {
+      detail: { reference: document.querySelector('#success .reference [data-method="qr"]').textContent }
+    })));
+    await kiosk.locator('#success h1:visible').click();
     await kiosk.locator('#feedback-modal[open]').waitFor();
     assert.equal(await kiosk.locator('#success .feedback-form, #receipt .feedback-form').count(), 0);
     await kiosk.locator('label[for="feedback-modal-star-4"]').click();

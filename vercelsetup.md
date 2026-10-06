@@ -55,7 +55,9 @@ Supabase integration is a separate task; the QR backend currently uses Redis.
 
 ## Final feedback behavior
 
-After a transaction completes, one feedback modal opens over Payment Successful.
+After a transaction completes, the feedback modal waits for a tap on a
+non-button area of Payment Successful or Enter while that screen has focus.
+It does not open automatically or reopen after it is dismissed.
 It contains five selectable stars, optional comments, Send Feedback, and an X
 at the top right. Closing it returns to the original success screen. Neither
 the success screen nor the receipt contains an inline feedback form.

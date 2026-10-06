@@ -17,6 +17,24 @@
   const forms = [];
   const saved = new Map();
   let reference = '', rating = 0, comment = '', pending = false, message = '';
+  let awaitingFeedback = false;
+
+  function openFeedback() {
+    if (!awaitingFeedback || success.hidden || modal.open) return;
+    awaitingFeedback = false;
+    modal.showModal();
+    close.focus();
+  }
+  const interactive = 'button, a, input, textarea, select, label, [role="button"], [contenteditable="true"]';
+  success.addEventListener('click', event => {
+    if (!event.target.closest(interactive)) openFeedback();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Enter' || event.repeat || event.target.closest(interactive) ||
+        !awaitingFeedback || success.hidden || modal.open) return;
+    event.preventDefault();
+    openFeedback();
+  });
 
   function render() {
     for (const form of forms) {
@@ -101,16 +119,10 @@
   addForm(modal, close, 'afterend');
   document.addEventListener('transaction-ready', event => {
     ready(event.detail.reference);
-    const openedReference = reference;
-    // Payment navigation finishes after the transaction is recorded.
-    setTimeout(() => {
-      if (reference === openedReference && !success.hidden && !modal.open) {
-        modal.showModal();
-        close.focus();
-      }
-    }, 0);
+    awaitingFeedback = true;
   });
   document.addEventListener('transaction-reset', () => {
+    awaitingFeedback = false;
     if (modal.open) modal.close();
     ready('');
   });
